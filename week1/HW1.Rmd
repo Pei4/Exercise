@@ -1,5 +1,5 @@
 ---
-title: "week_1"
+title: "homework_1"
 output: html_document
 ---
 
@@ -7,11 +7,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+### Introduction
+這是一堂自學互學的程式設計課程。藉由助教講解、組員討論的方式，讓學生在討論和實作中，逐漸熟悉程式設計。
 
 ```{r cars}
 summary(cars)
