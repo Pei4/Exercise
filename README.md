@@ -9,4 +9,4 @@
 * Homework  
 -[R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
 * After Class  
--Data Camp(Introduction to R)
+-Data Camp (Introduction to R)
