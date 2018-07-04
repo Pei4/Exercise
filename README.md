@@ -7,3 +7,4 @@
 -建立Github概念與製作
 ### Homework  
 -[R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
+-[123]( https://pei4.github.io/cs-x-programming/week2/twst)
