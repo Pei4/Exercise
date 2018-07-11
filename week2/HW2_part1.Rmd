@@ -1,0 +1,33 @@
+---
+title: "HW2_part1"
+output: html_document
+---
+Pei4  
+2018年7月11日  
+```{r}
+library(ggplot2)
+
+```
+##單變數:類別型  
+```{r}
+ggplot(iris, aes(x=Species))+
+  geom_bar(fill="lightgreen")
+
+```
+
+→三個類別皆有50項  
+
+###單變數:連續型
+```{r}
+ggplot(iris, aes(x=Sepal.Length))+
+  geom_histogram()+
+  facet_wrap(~Species)
+```
+(以facet拆成3張圖)
+##雙變數:類別&連續  
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Species))+
+  geom_point()
+```
+
+Iris
