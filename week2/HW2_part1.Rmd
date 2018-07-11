@@ -10,8 +10,8 @@ library(ggplot2)
 ```
 ##單變數:類別型  
 ```{r}
-ggplot(iris, aes(x=Species))+
-  geom_bar(fill="lightgreen")
+ggplot(iris, aes(x=Species, fill=Species))+
+  geom_bar()
 
 ```
 
@@ -19,15 +19,25 @@ ggplot(iris, aes(x=Species))+
 
 ###單變數:連續型
 ```{r}
-ggplot(iris, aes(x=Sepal.Length))+
+ggplot(iris, aes(x=Sepal.Length, fill=Species))+
   geom_histogram()+
   facet_wrap(~Species)
 ```
-(以facet拆成3張圖)
-##雙變數:類別&連續  
+
+(以facet拆成3張圖)  
+
+##雙變數:連續&連續
 ```{r}
-ggplot(iris, aes(x=Sepal.Length, y=Species))+
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species))+
   geom_point()
 ```
 
-Iris
+→Sepal.Length和Sepal.Width的關係
+
+##雙變數:離散&連續
+```{r}
+ggplot(iris, aes(x=Species, y=Sepal.Length, fill=Species))+
+  geom_boxplot()
+```
+
+→三個類別各自Sepal.Length的盒型圖
