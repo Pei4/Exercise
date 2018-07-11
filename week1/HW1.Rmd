@@ -1,5 +1,5 @@
 ---
-title: "homework_1"
+title: "Week1_note"
 output: html_document
 ---
 
@@ -10,16 +10,19 @@ knitr::opts_chunk$set(echo = TRUE)
 ### Introduction
 這是一堂自學互學的程式設計課程。藉由助教講解、組員討論的方式，讓學生在討論和實作中，逐漸熟悉程式設計。
 
-```{r cars}
-summary(cars)
-```
+### Git
+一種分散式版本控制系統，讓不同編輯者能將自己更新的內容分別存檔，以利於未來的偵錯，並避免同時更新時有覆蓋的問題。
 
-## Including Plots
+###Github  
+* Github:一個在web下即可編輯的開發者平台，提供新點子流通、利於多位工程師協作溝通並分享成果。  
+* 使用:  
+     1. 使用DeskTop建立連結Github帳戶和自己電腦的本機資料夾  
+     2. 利用Sublime(助教補充的程式工具)建立README的html檔並存在本機資料夾  
+     3. 在DeskTop裡為變動的內容取名並Commit(作為存檔)，再將此存檔push上Github  
+     4. 此時Github中的README就會隨之改變  
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+###R
+* R:一種通用的程式語言，可以輸入指令碼並做出要求的反應
+* RStudio:用來撰寫R、讀取R的程式
+* R markdown:在markdown中加入R程式輸出結果(如html)，利於作小簡報或靜態網頁
+    + markdown:一種標記語言，檔案以md.結尾(如README.md)
