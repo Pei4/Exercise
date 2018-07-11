@@ -10,7 +10,7 @@
 -[R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
 * After Class  
 -Data Camp (Introduction to R)
->### Week 2
-* Progress
-* Homework
+>### Week 2  
+* Progress  
+* Homework  
 -[Plot Practice](https://pei4.github.io/cs-x-programming/week2/HW2_part1)
