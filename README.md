@@ -3,11 +3,11 @@
 興趣是打排球和數位媒體創作，希望能藉由這堂課對程式語言有更多認識和學習。  
 >### Week 1  
 * Progress  
-+建立Github概念與製作  
-+R語言基本語法學習與應用  
-+建立R Markdown的html並匯入ReadMe
+  + 建立Github概念與製作  
+  + R語言基本語法學習與應用  
+  + 建立R Markdown的html並匯入ReadMe
 * Homework  
-+[R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
+  + [R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
 * After Class  
   + Introduction to R:介紹R的元素
    1. Vector:可容納元素的集合
