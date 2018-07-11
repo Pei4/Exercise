@@ -28,3 +28,4 @@
 * Progress  
 * Homework  
 -[Plot Practice](https://pei4.github.io/cs-x-programming/week2/HW2_part1)
+-[WordCloud](https://pei4.github.io/cs-x-programming/week2/HW2_part2)
