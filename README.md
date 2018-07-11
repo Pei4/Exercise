@@ -9,20 +9,20 @@
 * Homework  
 +[R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
 * After Class  
- + Introduction to R:介紹R的元素
-  1. Vector:可容納元素的集合
-  2. Matrix:可將資料分門別類的矩陣
-  3. Factor:用作分類的因子
-  4. Data frame:R語言專屬的資訊框架
-  5. List:將資料各自列表
- + Intermediate R
-  1. 邏輯與運算符號
-  2. 功能式:巡迴反覆的loop、設定功能的function、前提假設的for
-  3. 簡化資料:純列式的lapply、整理成表的sapply、可設定格式的vapply
-  4. 補充:grepl()、grep()捕捉資訊；sub()、gsub()取代資訊；as.Date()、as.time()指定日期時間
- + Introduction to the Tidyverse
-  1. 整理Dataset(選取行的filter、選取列的arrange、再計算的mutate、匯總選取資料的summarize)
-  2. ggplot圖像化(aes設定縱橫軸、geom_設定圖表類型、scale_x/y_log10設定縱橫軸幅度、size和color設定大小色彩、拆分圖表的facet_wrap、expand_limits設定縱橫軸起始點)
+  + Introduction to R:介紹R的元素
+   1. Vector:可容納元素的集合
+   2. Matrix:可將資料分門別類的矩陣
+   3. Factor:用作分類的因子
+   4. Data frame:R語言專屬的資訊框架
+   5. List:將資料各自列表
+  + Intermediate R
+   1. 邏輯與運算符號
+   2. 功能式:巡迴反覆的loop、設定功能的function、前提假設的for
+   3. 簡化資料:純列式的lapply、整理成表的sapply、可設定格式的vapply
+   4. 補充:grepl()、grep()捕捉資訊；sub()、gsub()取代資訊；as.Date()、as.time()指定日期時間
+  + Introduction to the Tidyverse
+   1. 整理Dataset(選取行的filter、選取列的arrange、再計算的mutate、匯總選取資料的summarize)
+   2. ggplot圖像化(aes設定縱橫軸、geom_設定圖表類型、scale_x/y_log10設定縱橫軸幅度、size和color設定大小色彩、拆分圖表的facet_wrap、expand_limits設定縱橫軸起始點)
 
 >### Week 2  
 * Progress  
