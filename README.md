@@ -26,6 +26,10 @@
 
 >### Week 2  
 * Progress  
+  + 練習分辨和製作ggplot  
+  + 介紹網路爬蟲、嘗試製作WordCloud  
 * Homework  
--[Plot Practice](https://pei4.github.io/cs-x-programming/week2/HW2_part1)  
--[WordCloud](https://pei4.github.io/cs-x-programming/week2/HW2_part2)
+  + [Plot Practice](https://pei4.github.io/cs-x-programming/week2/HW2_part1)  
+  + [WordCloud](https://pei4.github.io/cs-x-programming/week2/HW2_part2)  
+* After Class  
+  +
