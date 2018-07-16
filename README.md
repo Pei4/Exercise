@@ -41,7 +41,7 @@
    -TF-IDF權重:TF*IDF  
    -應用:開放式調查分析(藉客戶填寫的問卷進行客戶分群、客製化等服務)、自動化處理(對訊息、電子郵件快速分類與篩選)、分析合約內容(找出合約如保固、保險與診斷面談等所需細節)、
    調查競爭對手(結合網路爬蟲探勘對手的商業智慧)  
-  + TF-IDF in R Language
+  + TF-IDF in R Language  
    -Library:tm, tmcn, rJava, Rwordseg, SnowballC, slam
    -
 
