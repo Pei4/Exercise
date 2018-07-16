@@ -32,4 +32,4 @@
   + [Plot Practice](https://pei4.github.io/cs-x-programming/week2/HW2_part1)  
   + [WordCloud](https://pei4.github.io/cs-x-programming/week2/HW2_part2)  
 * After Class  
-  + [ggmap and public dataset](https://pei4.github.io/cs-x-programming/week2/ggmap/ggmap_with_public_dataset)  
+  + [ggmap and public dataset](https://pei4.github.io/cs-x-programming/week2/ggmap/ggmap_with_public_dataset.html)  
