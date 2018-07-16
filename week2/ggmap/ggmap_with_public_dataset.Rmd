@@ -1,16 +1,28 @@
+---
+title: "ggmap_with_public_dataset"
+output: html_document
+---
+```{r}
 library(ggmap)
 library(mapproj)
 library(dplyr)
 source('TWD97TM2toWGS84.R')
+```
 
-#叫出台北市大安區地圖
+叫出台北市大安區地圖
+```{r}
 map <- get_map(location=c(lon=121.543331, lat=25.028017), zoom=14, language = "zh-TW")
+```
 
-#叫出台北市大安區免費網路座標
+叫出台北市大安區免費網路座標
+```{r}
 data <- read.csv(file="free_net.csv")
+```
 
-#製圖
+製圖
+```{r}
 ggmap(map, darken = c(0.6, "white")) + 
   geom_point(aes(x=經度, y=緯度, color=服務類別, size=線路頻寬.M.), data=data%>% filter(行政區域 == "大安區"))+
   ggtitle("台北市大安區公眾區免費無線上網熱點")+
-  theme(plot.title = element_text(size =10))
+  theme(plot.title = element_text(size =20))
+```
