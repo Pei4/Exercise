@@ -33,3 +33,19 @@
   + [WordCloud](https://pei4.github.io/cs-x-programming/week2/HW2_part2)  
 * After Class  
   + [ggmap and public dataset](https://pei4.github.io/cs-x-programming/week2/ggmap/ggmap_with_public_dataset.html)  
+  + Text Mining前處理  
+   -目的:將半結構化/非結構資料經過統計演算，以取得其中必要的資訊  
+   -程序:標記同/多/反義詞等的詞庫處理、移除後綴的字根還原、過濾篩選單詞並藉由TF-IDF(Term Frequency-Inverse Document Frequence)分析使用頻率   
+   -TF:該單詞在特定文件中出現的次數/該文件總單詞數  
+   -IDF:log(總文件數)-log(該單詞有出現的文件數)  
+   * TF-IDF權重:TF*IDF  
+
+   -應用:開放式調查分析(藉客戶填寫的問卷進行客戶分群、客製化等服務)、自動化處理(對訊息、電子郵件快速分類與篩選)、分析合約內容(找出合約如保固、保險與診斷面談等所需細節)、
+   調查競爭對手(結合網路爬蟲探勘對手的商業智慧)  
+  + TF-IDF in R Language
+   -Library:tm, tmcn, rJava, Rwordseg, SnowballC, slam
+   -
+
+
+
+
