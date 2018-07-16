@@ -9,7 +9,7 @@
 * Homework  
   + [R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
 * After Class  
-  + Introduction to R:介紹R的元素
+  + Introduction to R:介紹R的元素  
    -Vector:可容納元素的集合  
    -Matrix:可將資料分門別類的矩陣  
    -Factor:用作分類的因子  
