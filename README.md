@@ -10,7 +10,7 @@
   + [R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
 * After Class  
   + [Datacamp]Introduction to R:介紹R的元素  
-   ⋅⋅* Vector:可容納元素的集合  
+    ⋅⋅* Vector:可容納元素的集合  
    ⋅⋅* Matrix:可將資料分門別類的矩陣  
    ⋅⋅* Factor:用作分類的因子  
    ⋅⋅* Data frame:R語言專屬的資訊框架  
