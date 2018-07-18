@@ -1,5 +1,0 @@
----
-title: "HW3"
-output: html_document
----
-

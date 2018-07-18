@@ -1,0 +1,20 @@
+---
+title: "HW3_part1"
+output: html_document
+---
+```{r}
+library(dplyr)
+```
+叫出1927~2015的奧斯卡入圍紀錄
+```{r}
+oscar <- read.csv('database.csv')
+```
+叫出每年奧斯卡得獎名單
+```{r}
+oscar %>%
+  filter(Winner == 1)
+```
+整理出重複得獎的電影並篩掉重複的文字
+```{r}
+unique(oscar[duplicated(oscar[,6]),c(2,6,3)], setOrder)
+```
