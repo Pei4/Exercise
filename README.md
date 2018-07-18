@@ -43,7 +43,7 @@
    調查競爭對手(結合網路爬蟲探勘對手的商業智慧)  
   + TF-IDF in R Language  
     1. x=單詞, y=文章, N=總文章數, tf=單詞在文章中出現的頻率, df=有單詞的文章數   
-    2. ![公式](C:\Users\Owner\Desktop\cs-x\cs-x-programming\week3\HW3_part2\TF-IDF)
+    2. ![公式](TF-IDF.png)
     3. Library:tm, tmcn, rJava, Rwordseg, SnowballC, slam     
   + [Datacamp]Exploration data analysis  
 
