@@ -10,11 +10,11 @@
   + [R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
 * After Class  
   + [Datacamp]Introduction to R:介紹R的元素  
-    1. Vector:可容納元素的集合  
-    2. Matrix:可將資料分門別類的矩陣  
-    3. Factor:用作分類的因子  
-    4. Data frame:R語言專屬的資訊框架  
-    5. List:將資料各自列表  
+  1. Vector:可容納元素的集合  
+  2. Matrix:可將資料分門別類的矩陣  
+  3. Factor:用作分類的因子  
+  4. Data frame:R語言專屬的資訊框架  
+  5. List:將資料各自列表  
   + [Datacamp]Intermediate R
      ⋅⋅* 邏輯與運算符號  
      ⋅⋅* 功能式:巡迴反覆的loop、設定功能的function、前提假設的for  
