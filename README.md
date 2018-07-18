@@ -10,19 +10,19 @@
   + [R Markdown](https://pei4.github.io/cs-x-programming/week1/HW1)
 * After Class  
   + [Datacamp]Introduction to R:介紹R的元素  
-  1. Vector:可容納元素的集合  
-  2. Matrix:可將資料分門別類的矩陣  
-  3. Factor:用作分類的因子  
-  4. Data frame:R語言專屬的資訊框架  
-  5. List:將資料各自列表  
+   1. Vector:可容納元素的集合  
+   2. Matrix:可將資料分門別類的矩陣  
+   3. Factor:用作分類的因子  
+   4. Data frame:R語言專屬的資訊框架  
+   5. List:將資料各自列表  
   + [Datacamp]Intermediate R
-     ⋅⋅* 邏輯與運算符號  
-     ⋅⋅* 功能式:巡迴反覆的loop、設定功能的function、前提假設的for  
-     ⋅⋅* 簡化資料:純列式的lapply、整理成表的sapply、可設定格式的vapply  
-     ⋅⋅* 補充:grepl()、grep()捕捉資訊；sub()、gsub()取代資訊；as.Date()、as.time()指定日期時間  
+   1. 邏輯與運算符號  
+   2. 功能式:巡迴反覆的loop、設定功能的function、前提假設的for  
+   3. 簡化資料:純列式的lapply、整理成表的sapply、可設定格式的vapply  
+   4. 補充:grepl()、grep()捕捉資訊；sub()、gsub()取代資訊；as.Date()、as.time()指定日期時間  
   + [Datacamp]Introduction to the Tidyverse  
-     ⋅⋅* 整理Dataset(選取行的filter、選取列的arrange、再計算的mutate、匯總選取資料的summarize)  
-     ⋅⋅* ggplot圖像化(aes設定縱橫軸、geom_設定圖表類型、scale_x/y_log10設定縱橫軸幅度、size和color設定大小色彩、拆分圖表的facet_wrap、expand_limits設定縱橫軸起始點)  
+   1. 整理Dataset(選取行的filter、選取列的arrange、再計算的mutate、匯總選取資料的summarize)  
+   2. ggplot圖像化(aes設定縱橫軸、geom_設定圖表類型、scale_x/y_log10設定縱橫軸幅度、size和color設定大小色彩、拆分圖表的facet_wrap、expand_limits設定縱橫軸起始點)  
 
 >### Week 2  
 * Progress  
@@ -34,16 +34,16 @@
 * After Class  
   + [ggmap and public dataset](https://pei4.github.io/cs-x-programming/week2/ggmap/ggmap_with_public_dataset.html)  
   + Text Mining前處理  
-     ⋅⋅* 目的:將半結構化/非結構資料經過統計演算，以取得其中必要的資訊  
-     ⋅⋅* 程序:標記同/多/反義詞等的詞庫處理、移除後綴的字根還原、過濾篩選單詞並藉由TF-IDF(Term Frequency-Inverse Document Frequence)分析使用頻率   
-     ⋅⋅* TF:該單詞在特定文件中出現的次數/該文件總單詞數  
-     ⋅⋅* IDF:log(總文件數)-log(該單詞有出現的文件數)  
-     ⋅⋅* TF-IDF權重:TF*IDF  
-     ⋅⋅* 應用:開放式調查分析(藉客戶填寫的問卷進行客戶分群、客製化等服務)、自動化處理(對訊息、電子郵件快速分類與篩選)、分析合約內容(找出合約如保固、保險與診斷面談等所需細節)、
+   1. 目的:將半結構化/非結構資料經過統計演算，以取得其中必要的資訊  
+   2. 程序:標記同/多/反義詞等的詞庫處理、移除後綴的字根還原、過濾篩選單詞並藉由TF-IDF(Term Frequency-Inverse Document Frequence)分析使用頻率   
+   3. TF:該單詞在特定文件中出現的次數/該文件總單詞數  
+   4. IDF:log(總文件數)-log(該單詞有出現的文件數)  
+   5. TF-IDF權重:TF*IDF  
+   6. 應用:開放式調查分析(藉客戶填寫的問卷進行客戶分群、客製化等服務)、自動化處理(對訊息、電子郵件快速分類與篩選)、分析合約內容(找出合約如保固、保險與診斷面談等所需細節)、
    調查競爭對手(結合網路爬蟲探勘對手的商業智慧)  
   + TF-IDF in R Language  
-     ⋅⋅* Library:tm, tmcn, rJava, Rwordseg, SnowballC, slam  
-     ⋅⋅*     
+   1. Library:tm, tmcn, rJava, Rwordseg, SnowballC, slam  
+   2.      
   + [Datacamp]Exploration data analysis  
 
 
