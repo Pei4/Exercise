@@ -12,11 +12,13 @@ library(tm)
 library(knitr)
 library(ggplot2)
 library(factoextra)
+library(Matrix)
+library(tmcn)
 
-#爬蟲世足4強開始的世足板
+#爬蟲世足「法國對阿根廷賭盤開始」~「賽事結束」的世足板
 #https://www.ptt.cc/bbs/WorldCup/index1293.html
-from <- 1328 # 2018-07-11
-to   <- 1385 # 2018-07-18
+from <- 1217 # 2018-06-29
+to   <- 1226 # 2018-06-30
 prefix = "https://www.ptt.cc/bbs/WorldCup/index"
 
 data <- list()
@@ -31,7 +33,7 @@ data <- unlist(data)
 
 head(data)
 
-#依照小時
+#依照小時分類做出24個txt檔
 getdoc <- function(url)
 {
   html <- htmlParse( getURL(url) )
