@@ -14,5 +14,5 @@ oscar <- read.csv('database.csv')
 oscar <- oscar %>%
   filter(Winner == 1)
 film = unique(oscar[duplicated(oscar[,6]),])
-film[order(film$Film),]
+film
 ```

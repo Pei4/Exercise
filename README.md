@@ -46,7 +46,15 @@
     2. ![公式](https://pei4.github.io/cs-x-programming/week2/TFIDF.JPG)
     3. Library:tm, tmcn, rJava, Rwordseg, SnowballC, slam     
   + [Datacamp]Exploration data analysis  
-
+>### Week 3  
+* Progress  
+  + EDA 概述:反覆資料探索→製造合理的合成欄位→資料視覺化以顯出資料重點  
+  + 示範使用Kaggle Script製作EDA報告
+* Homework  
+  + [EDA報告](https://pei4.github.io/cs-x-programming/week3/HW3_part1)
+  + [世足法國vs阿根廷文字探勘](https://pei4.github.io/cs-x-programming/week3/HW3_part2/HW3_part0)
+  + [世足法國vs阿根廷TFIDF -> PCA -> K-means](https://pei4.github.io/cs-x-programming/week3/HW3_part2/HW3_part2)
+* After Class  
 
 
 
