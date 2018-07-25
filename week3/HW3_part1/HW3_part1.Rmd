@@ -1,0 +1,51 @@
+---
+title: "HW3_part1"
+output: html_document
+---
+(Data from : https://www.kaggle.com/niyamatalmass/google-job-skills)   
+目的:分析Google職缺中對雲平台(雲端)需求的地區  
+```{r}
+Data = read.csv('job_skills.csv')
+library(stringr)
+library(knitr)
+library(tidyr)
+library(dplyr)
+```
+
+1.將Title中包含Cloud的項目提取出來
+```{r}
+Clo <- Data %>% 
+  filter(str_detect(Title, "Cloud")) 
+```
+
+2.分割地區
+```{r}
+Loc = Clo$Location
+splitLocation <- function(x){
+  strsplit(x, split='[,]')[[1]]
+}
+Temp = sapply(as.character(Loc), splitLocation)
+```
+
+3.創造NewTitle資料架構(將地點對應到職位)
+```{r}
+T <- lengths(Temp)    ## expansion size
+FlatColumn <- unlist(Temp, use.names = FALSE)
+NewTitle <- data.frame(Title = rep.int(Clo$Title, T),
+                      Location = FlatColumn)
+NewTitle$Location <- as.character(NewTitle$Location)
+```
+
+3.移除有問題的字
+```{r}
+NewTitle$Title <- gsub("羹", "", as.character(NewTitle$Title), fixed=TRUE)
+```
+
+4.整理項目
+```{r}
+NewTitle$Location[NewTitle$Location %in% c("France",	"French)")] <- "Franch"
+NewTitle$Location[NewTitle$Location %in% c("New York", "NY")] <- "New York"
+NewTitle$Location[!(NewTitle$Location %in% c('Australia', 'Canada', 'Germany', 'Franch', 'India', 'Ireland', 'Italy', 'Netherlands', 'Poland', 'Romania', 'Switzerland', 'United Kingdom', 'United States', 'Amsterdam', 'Berlin', 'Bucharest', 'Cambridge', 'Chicago', 'Dublin', 'Etterbeek', 'Frankfurt', 'Gurugram', 'Hamburg', 'London', 'Milan', 'New York', 'Paris', 'San Francisco', 'Singapore', 'Sunnyvale', 'Sydney', 'Warszawa', 'Waterloo'))] <- "Rare Title"
+NewTitle$Location <- as.factor(NewTitle$Location)
+kable(table(NewTitle$Title, NewTitle$Location))
+```
