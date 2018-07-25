@@ -1,9 +1,7 @@
 ---
-title: "HW3_part1"
+title: "HW4_part1"
 output: html_document
 ---
-(Data from : https://www.kaggle.com/niyamatalmass/google-job-skills)   
-目的:分析Google職缺中對雲平台(雲端)需求的地區  
 ```{r}
 Data = read.csv('job_skills.csv')
 library(stringr)
@@ -11,16 +9,9 @@ library(knitr)
 library(tidyr)
 library(dplyr)
 ```
-
-1.將Title中包含Cloud的項目提取出來
+分割地區
 ```{r}
-Clo <- Data %>% 
-  filter(str_detect(Title, "Cloud")) 
-```
-
-2.分割地區
-```{r}
-Loc = Clo$Location
+Loc = Data$Location
 splitLocation <- function(x){
   strsplit(x, split='[,]')[[1]]
 }
@@ -31,7 +22,7 @@ Temp = sapply(as.character(Loc), splitLocation)
 ```{r}
 T <- lengths(Temp)
 FlatColumn <- unlist(Temp, use.names = FALSE)
-NewTitle <- data.frame(Category = rep.int(Clo$Category,T),
+NewTitle <- data.frame(Category = rep.int(Data$Category,T),
                       Location = FlatColumn)
 NewTitle$Location <- as.character(NewTitle$Location)
 ```
