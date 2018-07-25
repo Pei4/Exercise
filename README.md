@@ -52,7 +52,7 @@
   + 示範使用Kaggle Script製作EDA報告  
   + 介紹PCA和Kmeans概念，並示範做出TFIDF->PCA->Kmeans  
 * Homework  
-  + [EDA報告](https://pei4.github.io/cs-x-programming/week3/HW3_part1)
+  + [EDA報告](https://pei4.github.io/cs-x-programming/week3/HW3_part1/HW3_part1)
   + [世足法國vs阿根廷文字探勘](https://pei4.github.io/cs-x-programming/week3/HW3_part2/HW3_part0)
   + [世足法國vs阿根廷TFIDF -> PCA -> K-means](https://pei4.github.io/cs-x-programming/week3/HW3_part2/HW3_part2)
 * After Class  
