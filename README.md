@@ -56,6 +56,11 @@
   + [世足法國vs阿根廷文字探勘](https://pei4.github.io/cs-x-programming/week3/HW3_part2/HW3_part0)
   + [世足法國vs阿根廷TFIDF -> PCA -> K-means](https://pei4.github.io/cs-x-programming/week3/HW3_part2/HW3_part2)
 * After Class  
-
+### Week 4  
+* Progress  
+  + 問題定義TEF:Task(提問), Experience(變數), Performance(衡量)  
+  + 統計工具:敘述統計、機率分布、假設檢定與迴歸分析  
+* Homework  
+  + [EDA分析報告](https://pei4.github.io/cs-x-programming/week4/HW4_part1)
 
 

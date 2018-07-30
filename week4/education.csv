@@ -1,4 +1,4 @@
-Year,Total_M,Total_F,Element_M,Element_F,Junior_M,Junior_F,Senior_M,Senior_F,Voc_M,Voc_F,Spe_M,Spe_F,College_M,College_F,Master_M,Master_F
+Year,TotalM,TotalF,ElemM,ElemF,JuniM,JuniF,SeniM,SeniF,VocaM,VocaF,SpecM,SpecF,CollM,CollF,MastM,MastF
 2006,3.9,3.6,2.9,2.7,3.7,2.7,3.7,3.8,4.4,4.1,3.6,3.4,4.7,4.1,0,0
 2007,3.8,3.8,7.1,3.7,3.7,3.3,3.6,4.6,4.1,4.8,3.5,2.8,4.2,4.2,0,0
 2008,4.2,3.8,6.7,6.4,4.5,4,3.6,4.6,4.8,3.7,4,2.6,4.4,4.9,0,0
@@ -9,4 +9,3 @@ Year,Total_M,Total_F,Element_M,Element_F,Junior_M,Junior_F,Senior_M,Senior_F,Voc
 2013,4.6,3.7,2.1,1.5,5.1,2.8,4.4,4.7,5.3,3.5,3.9,3.7,5.2,4.6,2.7,2.5
 2014,4.2,3.6,2,1.5,4.1,1.8,4.5,4.4,3.8,3.2,3.7,3.2,6.1,5.1,3.1,2.1
 2015,3.8,3.6,1.8,2.4,2.5,1.4,4.2,5.1,4.6,2.8,3,3.1,5.6,5,2.4,2.7
-2016,4.5,3.3,2.3,0,4.2,1.7,4.6,2.2,4.5,3.8,4,2.4,6.3,4.4,2.3,2.8

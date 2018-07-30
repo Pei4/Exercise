@@ -2,35 +2,108 @@
 title: "HW4_part1"
 output: html_document
 ---
+資料來源:  
+ 教育https://data.gov.tw/dataset/35960   
+ 年齡https://data.gov.tw/dataset/36105  
+ 婚姻https://data.gov.tw/dataset/35917
+
 ```{r}
-Data = read.csv('job_skills.csv')
-library(stringr)
-library(knitr)
-library(tidyr)
-library(dplyr)
-```
-分割地區
-```{r}
-Loc = Data$Location
-splitLocation <- function(x){
-  strsplit(x, split='[,]')[[1]]
-}
-Temp = sapply(as.character(Loc), splitLocation)
+Edu = read.csv('education.csv')
+Mar = read.csv('marriage.csv')
+Age = read.csv('age.csv')
+library(ggplot2)
+library(reshape2)
+library(gridExtra)
 ```
 
-3.創造NewTitle資料架構(將地點對應到職位)
+###觀察失業率
+1.教育程度
 ```{r}
-T <- lengths(Temp)
-FlatColumn <- unlist(Temp, use.names = FALSE)
-NewTitle <- data.frame(Category = rep.int(Data$Category,T),
-                      Location = FlatColumn)
-NewTitle$Location <- as.character(NewTitle$Location)
+EduF <- Edu[,c("Year","ElemF","JuniF","SeniF", "VocaF","SpecF","CollF","MastF")]
+EduF <- melt(EduF, id.vars="Year")
+EduM <- Edu[,c("Year","ElemM","JuniM","SeniM", "VocaM","SpecM","CollM","MastM")]
+EduM <- melt(EduM, id.vars="Year")
+
+plotF1 <- ggplot(EduF, aes(Year,value, col=variable)) + 
+  geom_point() + 
+  geom_line() +
+  ylim(0, 15)
+plotM1 <- ggplot(EduM, aes(Year,value, col=variable)) + 
+  geom_point() + 
+  geom_line()+
+  ylim(0, 15)
+grid.arrange(plotF1, plotM1, ncol=2)
 ```
 
-3.整理項目
+2.年齡
 ```{r}
-NewTitle$Location[NewTitle$Location %in% c("France",	"French)")] <- "Franch"
-NewTitle$Location[NewTitle$Location %in% c("New York", "NY")] <- "New York"
-NewTitle$Location <- as.factor(NewTitle$Location)
-kable(table(NewTitle$Category, NewTitle$Location))
+AgeF <- Age[,c("Year","X24F","X29F","X34F", "X39F","X44F","X49F","X54F","X59F","X64F","X69F")]
+AgeF <- melt(AgeF, id.vars="Year")
+AgeM <- Age[,c("Year","X24M","X29M","X34M", "X39M","X44M","X49M","X54M","X59M","X64M","X69M")]
+AgeM <- melt(AgeM, id.vars="Year")
+
+plotF2 <- ggplot(AgeF, aes(Year,value, col=variable)) + 
+  geom_point() + 
+  geom_line() +
+  ylim(0, 20)
+plotM2 <- ggplot(AgeM, aes(Year,value, col=variable)) + 
+  geom_point() + 
+  geom_line() +
+  ylim(0, 20)
+grid.arrange(plotF2, plotM2, ncol=2)
+ 
+
 ```
+
+3.婚姻
+```{r}
+MarF <- Mar[,c("Year","YesF","NoF","AfterF")]
+MarF <- melt(MarF, id.vars="Year")
+MarM <- Mar[,c("Year","YesM","NoM","AfterM")]
+MarM <- melt(MarM, id.vars="Year")
+
+plotF3 <- ggplot(MarF, aes(Year,value, col=variable)) + 
+  geom_point() + 
+  geom_line()+
+  ylim(0, 13)
+plotM3 <- ggplot(MarM, aes(Year,value, col=variable)) + 
+  geom_point() + 
+  geom_line() +
+  ylim(0, 13)
+grid.arrange(plotF3, plotM3, ncol=2)
+```
+
+看起來無論是用什麼指標分類，男性的失業率普遍都比相同標準的女性要高  
+
+###PartA.性別vs失業率  
+1.將這10年間的各分類男女失業率整理成新dataframe: GenderDf
+```{r}
+gender = c("M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M",
+           "F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F")
+catagory = c("Elem", "Juni","Seni","Voca","Spec","Coll","Mast","24","29","34","39","44","49","54","59","64","69","No","Yes","After","Elem", "Juni","Seni","Voca","Spec","Coll","Mast","24","29","34","39","44","49","54","59","64","69","No","Yes","After")
+rate = c(EduM$value, AgeM$value, MarM$value, EduF$value, AgeF$value, MarF$value)
+GenderDf <- data.frame(gender,catagory, rate)
+```
+
+2.畫圖觀察男女失業率─盒形圖，並計算信賴區間
+```{r}
+ggplot(data = GenderDf, aes(x = gender, y = rate)) +
+ geom_boxplot() + coord_flip() +
+ labs( y = 'rate', x = 'gender', 
+       title = 'Unemployment Rate Box')
+```
+
+(計算95%信賴區間)
+```{r}
+with(GenderDf, 
+     tapply(rate, gender,
+     function(x) 
+       c(mean(x) + c(-2, 2) * sd(x)/sqrt(length(x)))))
+```
+
+###以下用 t-test 檢驗性別是否影響失業率
+```{r}
+t.test(rate ~ gender, data = GenderDf)
+```
+
+兩者平均皆落在信賴區間，故不否認性別與失業率之關聯。
