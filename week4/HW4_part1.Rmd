@@ -78,11 +78,11 @@ grid.arrange(plotF3, plotM3, ncol=2)
 ###PartA.性別vs失業率  
 1.將這10年間的各分類男女失業率整理成新dataframe: GenderDf
 ```{r}
-gender = c("M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M","M",
-           "F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F","F")
-catagory = c("Elem", "Juni","Seni","Voca","Spec","Coll","Mast","24","29","34","39","44","49","54","59","64","69","No","Yes","After","Elem", "Juni","Seni","Voca","Spec","Coll","Mast","24","29","34","39","44","49","54","59","64","69","No","Yes","After")
+year = c(2006:2015)
+gender = c(rep("M", each=200), rep("F", each=200))
+catagory = c(rep("Elem", each=10), rep("Juni", each=10), rep("Seni", each=10), rep("Voca", each=10), rep("Spec", each=10), rep("Coll", each=10), rep("Mast", each=10), rep("24", each=10), rep("29", each=10), rep("34", each=10), rep("39", each=10), rep("44", each=10), rep("49", each=10), rep("54", each=10), rep("59", each=10), rep("64", each=10), rep("69",each=10), rep("No", each=10), rep("Yes", each=10), rep("After", each=10))
 rate = c(EduM$value, AgeM$value, MarM$value, EduF$value, AgeF$value, MarF$value)
-GenderDf <- data.frame(gender,catagory, rate)
+GenderDf <- data.frame(year,gender,catagory, rate)
 ```
 
 2.畫圖觀察男女失業率─盒形圖，並計算信賴區間
@@ -93,7 +93,7 @@ ggplot(data = GenderDf, aes(x = gender, y = rate)) +
        title = 'Unemployment Rate Box')
 ```
 
-(計算95%信賴區間)
+(95%信賴區間)
 ```{r}
 with(GenderDf, 
      tapply(rate, gender,
@@ -106,4 +106,221 @@ with(GenderDf,
 t.test(rate ~ gender, data = GenderDf)
 ```
 
-兩者平均皆落在信賴區間，故不否認性別與失業率之關聯。
+(假設變異數相同)
+```{r}
+t.test(rate ~ gender, data = GenderDf, var.equal = TRUE)
+```
+
+###PartB.教育程度vs失業率
+1.觀察教育程度是否與失業率有關
+```{r}
+library(Hmisc)
+library(dplyr)
+
+Gender2 <- GenderDf[c(1:70, 201:270),]
+Gender2$catagory <- factor(Gender2$catagory, 
+                       levels = c('Elem','Juni','Seni','Voca','Spec','Coll','Mast'))
+tapply(Gender2$rate, Gender2$catagory, mean)
+```
+
+2.畫圖
+```{r}
+ggplot(data = Gender2, 
+       aes(x = catagory, y = rate)) +
+  stat_summary(fun.data = 'mean_cl_boot', size = 1) +
+  scale_y_continuous(breaks = seq(0, 20, by = 5)) +
+  geom_hline(yintercept = mean(Gender2$rate) , 
+             linetype = 'dotted') +
+  labs(x = '教育程度', y = '失業率') +
+  coord_flip()
+```
+
+###ANOVA檢驗
+```{r}
+anova(m1 <- lm(rate ~ catagory, data =Gender2))
+```
+
+###推測學歷與失業率的關係會受年分改變影響，畫圖觀察
+```{r}
+ggplot(data = Gender2, 
+       aes(group = catagory, 
+          y = rate, x = year)) +
+  geom_point() +
+  stat_smooth(method = 'lm', se = F) +
+  stat_smooth(aes(group = catagory, 
+          y = rate, x = year), 
+          method = 'lm', se = F) + 
+  facet_grid( . ~  catagory) +
+  labs(x = '年分', y = '失業率')
+```
+
+1.用ANOVA檢驗假設是否正確─將年份加入模型
+```{r}
+anova(m2 <- update(m1, . ~ . + 
+            year, data = Gender2))
+```
+2.或許不是學歷而是年分
+```{r}
+anova(m3 <- update(m2, . ~ . - catagory,  data = Gender2))
+```
+
+###將ANOVA結果做成圖表
+1.計算需要的數據
+```{r}
+res_lm <- lapply(list(m1, m2, m3), summary)
+(res_lm[[2]]$r.sq - res_lm[[3]]$r.sq)/res_lm[[2]]$r.sq
+```
+
+a.控制年分下，教育程度的影響
+```{r}
+anova(m3, m2)
+```
+
+b.控制教育程度下，年份的影響
+```{r}
+(res_lm[[2]]$r.sq - res_lm[[1]]$r.sq)/res_lm[[1]]$r.sq
+anova(m1, m2)
+```
+
+2.畫圖
+```{r}
+library(coefplot)
+
+m2 <- lm(rate ~ catagory+year- 1, 
+         data = Gender2)
+coefplot(m2, xlab = '估計值', ylab = '迴歸變項', title = '反應變項 =失業率')
+```
+
+3.把預測值、殘差與影響度放進資料
+```{r}
+fit_m2 <- data.frame(Gender2[, c(4, 3, 1)], fitted = fitted(m2), resid = resid(m2),
+                     infl = influence(m2)$hat )
+```
+
+4.依教育程度疊合觀測值與預測值
+```{r}
+ggplot(data = fit_m2, aes(x = rate, group = catagory )) +
+ stat_density(geom = 'path', position = 'identity') +
+ stat_density(geom = 'path', position = 'identity', aes(x = fitted)) +
+ geom_vline(xintercept = c(with(Gender2, tapply(rate,catagory, mean))), linetype = 'dotted')+
+ facet_grid(catagory ~ .) +
+ scale_x_continuous(breaks = seq(0, 20, by = 5))+
+ labs(x = '失業率', y = '機率密度')
+```
+
+5.看殘差分配，依教育程度，檢視常態與變異數同質假設
+```{r}
+ggplot(data = fit_m2, aes(x = scale(resid)), group = catagory ) +
+ stat_density(geom = 'path', position = 'identity', aes(linetype = catagory)) +
+ scale_linetype_manual(values = 7:1) +
+ guides(linetype = guide_legend(reverse = TRUE)) +
+ labs(x = '標準化殘差', y = '機率密度') +
+ theme(legend.position = c(.8, .6))
+```
+
+6.看殘差Q-Q 圖，依教育程度。檢視常態假設
+```{R}
+library(lattice)
+qqmath(~ scale(resid) | catagory, data = fit_m2, type = c('p', 'g', 'r'),
+       xlab = '常態位數', ylab = '標準化殘差', layout = c(2, 3),
+       pch = '.', cex = 2)
+```
+
+7.看預測值與殘差的散佈圖，檢查線性與等分散假設
+```{r}
+library(MASS)
+ggplot(data = fit_m2, aes(x = fitted, y = scale(resid), group = catagory )) +
+  geom_point(pch = 20, size = 1) +
+  stat_smooth(method = 'rlm', se = F) +
+  facet_grid(catagory ~ .) +
+  labs(x = '失業率預測值', y = '標準化殘差')
+```
+
+8.呈現影響值（影響估計結果過大的值）與標準化殘差
+```{r}
+ggplot(data = fit_m2, aes(x = infl, y = scale(resid), group = catagory)) +
+ geom_text(aes(label = rownames(fit_m2)), cex = 2) +
+ geom_hline(yintercept = 0, linetype = 'dotted') +
+ facet_grid(catagory ~ .) +
+ labs(x = '影響值', y = '標準化殘差')
+```
+
+9.看影響值
+```{r}
+summary(influence(m2)$hat)
+```
+
+###Part C.分析資料集當中的其他變項是否和失業率有關
+```{r}
+age = c(rep(24, each=10),rep(29, each=10), rep(34,each=10), rep(39,each=10), rep(44,each=10), rep(49,each=10), rep(54,each=10), rep(59,each=10),rep(64,each=10),rep(69,each=10))
+rate2 = c(AgeF$value, MarF$value)
+Gender3 <- data.frame(rate, age, year)
+```
+
+1.檢視基本統計量
+```{r}
+colMeans(Gender3)
+```
+
+2.呈現兩兩散佈圖
+```{r warning = FALSE}
+library(heplots)
+scatterplotMatrix(~ rate + age + year, data= Gender3,
+  pch = '.', cex = 3, smooth = FALSE, reg.line = FALSE, ellipse = TRUE,
+  diagonal = 'none', lower.panel = NULL)
+```
+
+3.使用corrplot，以圖形顯示相關性的大小
+```{r}
+library(corrplot)
+corrplot(cor(Gender3), method = 'ellipse', order = 'hclust', addrect =5,
+         type = 'upper', tl.pos = 'n')
+corrplot(cor(Gender3), add = TRUE, type = 'lower', method = 'number',
+         order = 'hclust', col = 'black', diag = FALSE, tl.pos = 'n', cl.pos = 'n')
+```
+
+4.放進三個解釋變項
+```{r}
+summary(m4 <- lm(rate ~ age + year, data = Gender3))
+```
+
+5.看看效果如何
+```{r}
+coefplot(m4, predictors = c('rate', 'age', 
+                            'year'),
+ xlab = '估計值', ylab = '迴歸變項(去除截距)', title = '反應變項是失業率')
+```
+
+```{r}
+library(effects)
+plot(allEffects(m4), main = '', ylim = c(0, 20), grid = T)
+```
+
+6.利用 lm.beta 套件，計算標準化迴歸係數
+```{r}
+library(lm.beta)
+summary(lm.beta(m4))
+```
+
+7.看看控制年齡後，年分的效果
+```{r}
+summary(m5 <- update(m4, . ~ . - year , data = Gender3))
+```
+```{r}
+anova(m5, m4)
+```
+
+rate ~ age + year
+Gender3[,1] ~ Gender3[,2] + Gender3[,3]
+```{r}
+m5 <- lm(rate ~ age + year, data = Gender3)
+fit_m5 <- data.frame(Gender3[, c(1, 2, 3)], fitted = fitted(m5), resid = resid(m5), infl = influence(m5)$hat)
+
+ggplot(data = fit_m5, aes(x = rate, group = year )) +
+ stat_density(geom = 'path', position = 'identity') +
+ stat_density(geom = 'path', position = 'identity', aes(x = fitted)) +
+ geom_vline(xintercept = c(with(Gender3, tapply(rate, year, mean))), linetype = 'dotted')+
+ facet_grid(year ~ .) +
+ scale_x_continuous(breaks = seq(0, 20, by = 5))+
+ labs(x = '失業率', y = '機率密度')
+```
