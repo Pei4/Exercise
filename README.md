@@ -61,6 +61,11 @@
   + 問題定義TEF:Task(提問), Experience(變數), Performance(衡量)  
   + 統計工具:敘述統計、機率分布、假設檢定與迴歸分析  
 * Homework  
-  + [EDA分析報告](https://pei4.github.io/cs-x-programming/week4/HW4_part1)
+  + [EDA分析報告](https://pei4.github.io/cs-x-programming/week4/HW4_part1)  
+* AfterClass  
+  + ​[video]利用R語言進行ANOVA​  
+  + ​[E-book]A Handbook of Statistical Analyses Using R​  
+  + t Test | Educational Research Basics by Del Siegle​
+  + ​淺談p值(p-value)​​
 
 
