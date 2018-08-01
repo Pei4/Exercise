@@ -1,0 +1,12 @@
+name: HW5shiny
+title: HW5shiny
+username:
+account: pei4
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 393038
+bundleId: 1511033
+url: https://pei4.shinyapps.io/HW5shiny/
+when: 1533106222.4626
+asMultiple: FALSE
+asStatic: FALSE

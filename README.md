@@ -66,6 +66,10 @@
   + ​[video]利用R語言進行ANOVA​  
   + ​[E-book]A Handbook of Statistical Analyses Using R​  
   + t Test | Educational Research Basics by Del Siegle​
-  + ​淺談p值(p-value)​​
-
-
+  + ​淺談p值(p-value)​​  
+### Week5  
+* Progress  
+  + 演講:敏捷開發  
+  + Shiny導論  
+* Homework  
+  + [Shiny test](https://pei4.shinyapps.io/HW5shiny/)
