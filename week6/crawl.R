@@ -26,3 +26,4 @@ for(j in c(1:10)){
     Data[rownum,4] <- population
   }
 }
+saveRDS(Data, "Data.rds")
