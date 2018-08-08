@@ -72,4 +72,12 @@
   + 演講:敏捷開發  
   + Shiny導論  
 * Homework  
-  + [Shiny test](https://pei4.shinyapps.io/HW5shiny/)
+  + [Shiny test](https://pei4.shinyapps.io/HW5shiny/)  
+* AfterClass  
+  + 期末專案內容大綱討論  
+  + 爬蟲撰寫協助  
+  + 資料(人氣統計)視覺化  
+### Week6
+* Progress
+  + 衝刺期末專案
+  + 專案Demo
