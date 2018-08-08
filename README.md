@@ -81,3 +81,6 @@
 * Progress
   + 衝刺期末專案
   + 專案Demo
+* Homework  
+  + [專案PPT](https://drive.google.com/file/d/10PS03M5A2FszLJna8Lb9TwEcez2zIH6a/view)  
+  + [專案APP](https://pei4.github.io/cs-x-programming/week6/app)
